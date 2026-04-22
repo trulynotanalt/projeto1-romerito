@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cleysyfoods</title> <link rel ="stylesheet" href ="{{url_for('static', filename = 'app.css')}}" > 
+</head>
+<body>
+
+<main>
+    <form method="POST" action="{{ url_for('login' ) }}">
+    <input class="inputs" type="text" name="usuario" placeholder="usuario">
+    <input class="inputs" type="password" name="senha" placeholder="senha">
+    <button class="butoes" type="submit"> Cadastrar-se</button>
+    
+</form>
+</main>
+</body>
+</html>

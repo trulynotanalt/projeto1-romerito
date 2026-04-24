@@ -1,37 +1,55 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template,request, redirect, url_for
 
-app = Flask(__name__)
+app=Flask(__name__)
 
-cleylogs = False
+usuario= {}
 
-
-
-@app.route('/')
+@app.route("/")
 def index():
     return render_template('index.html')
 
+@app.route("/cadastro", methods=["GET", "POST"])
+def cadastro():
 
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    global cleylogs
-    usuario = request.form.get('usuario')
-    senha = request.form.get('senha')
+    global usuario
+    if usuario:
+        return redirect(url_for('index'))
     
+    if request.method == 'POST':
+
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+        telefone = request.form.get('telefone')
+
+        if not email or not senha or not telefone:
+            return redirect(url_for('cadastro'))
+        
+        
+        usuario.update({"email": email, 
+                        "senha": senha, 
+                        "telefone": telefone})
+
+        return redirect(url_for('index'))
     
-    if request.method == 'GET':
-        return render_template('login.html')
+    return render_template("cadastro.html")
+
+
+@app.route("/perfil")
+def perfil():
+    global usuario
+    if usuario:
+        return redirect(url_for('index'))
     
-    if request.method == 'POST' and usuario and senha :
-        return render_template('login.html')
+    return render_template("perfil.html")
+
+@app.route("/ciriaca")
+def criacao():
+    global usuario
+    if usuario:
+        return redirect(url_for('cadastro'))
+    return render_template("criacao.html")
+
+
     
-    if request.method == 'POST' and not usuario and not senha :
-        return render_template('index.html')
-
-    return render_template('login.html')
 
 
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

@@ -1,0 +1,75 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#voltar{
+    background-color: #FF1C1C;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    padding: 0.8%;
+    border-radius: 50px;
+    position: absolute;
+    left: 1%;
+    top: 2%;
+    border: 1px solid #bbbbbb;
+    box-shadow: #949494 0 4px 4px 0;
+    width: 6vw;
+}
+#voltar:hover{
+    scale: 1.1;
+    transition: 0.3s ease-in-out;
+    background-color: #ffffff;
+    color: #FF1C1C;
+    cursor: pointer;
+}
+label{
+    font-weight: 700;
+}
+form{
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: #949494 0px 4px 4px 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width:24vw;
+    padding: 2%;
+    height: 64vh;   
+    gap: 5%;
+}
+form div{
+    width: 80%;
+}
+form div input{
+    width: 100%;
+    background-color: #f2f2f2;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+    padding: 3%;
+    box-shadow: #949494 0 4px 4px 0;
+}
+form button{
+    width: 80%;
+    padding: 3%;
+    background-color: #FF1C1C;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+    box-shadow: #949494 0 4px 4px 0;
+    transition: 0.3s ease-in-out;
+    margin-top: 5%;
+}
+form button:hover{
+    scale: 1.1;
+    transition: 0.3s ease-in-out;
+    background-color: #ffffff;
+    color: #FF1C1C;
+    cursor: pointer;
+}
+body{
+    background-color: #DDDDDD;
+}

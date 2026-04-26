@@ -1,0 +1,83 @@
+{%extends 'base.html'%}
+{%block styles%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/criacao.css')}}">
+{%endblock%}
+
+{%block content%}
+    <main>
+        <h1>Criação de Pedidos</h1>
+
+        <form action="" method="post">
+            <div id="block-one">
+                <div class="lines-block-one">
+
+                    <div class="container-inputs">
+                        <label for="nome-pedido">Nome do Pedido:</label>
+                        <input type="text" id="nome-pedido" name="nome_pedido">
+                    </div>
+
+                    <div class="container-inputs">
+                        <label for="nome-cliente">Nome do Cliente:</label>
+                        <input type="text" id="nome-cliente" name="nome_cliente">
+                    </div>
+
+                </div>
+
+                <div class="lines-block-one">
+                    <label for="cidade" id="label-endereco">Endereço:</label>
+                    <div class="container-inputs" id="inputs-endereco">
+                        <input type="text" id="cidade" name="cidade" placeholder="Cidade">
+                        <input type="text" id="bairro" name="bairro" placeholder="Bairro">
+                        <input type="text" id="rua" name="rua" placeholder="Rua">
+                        <input type="text" id="numero" name="numero" placeholder="Número">
+                    </div>
+                </div>
+
+                <div class="lines-block-one">
+                    <div class="container-inputs">
+                        <label for="tamanho-p">Tamanho</label>
+                        <div>
+                            <label for="tamanho-p">P</label>
+                            <input type="checkbox" id="tamanho-p" name="tamanho" value="P">
+                            <label for="tamanho-m">M</label>
+                            <input type="checkbox" id="tamanho-m" name="tamanho" value="M">
+                            <label for="tamanho-g">G</label>
+                            <input type="checkbox" id="tamanho-g" name="tamanho" value="G">
+                            <label for="tamanho-gg">GG</label>
+                            <input type="checkbox" id="tamanho-gg" name="tamanho" value="GG">
+                        </div>
+                    </div>
+
+                    <div class="container-inputs">
+                        <label for="quantidade">Quantidade</label>
+                        <input type="text" id="quantidade" name="quantidade">
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="block-two">
+                 <div class="lines-block-one">
+
+                    <div class="container-inputs">
+                        <label for="telefone">Nº de Telefone:</label>
+                        <input type="text" id="telefone" name="telefone">
+                    </div>
+
+                    <div class="container-inputs">
+                        <label for="pagamento">Mét. Pagamento:</label>
+                        <input type="text" id="pagamento" name="pagamento">
+                    </div>
+
+                    <div class="container-inputs">
+                        <label for="valor">Valor:</label>
+                        <input type="text" id="valor" name="valor">
+                    </div>
+                </div>
+            </div>
+            <div id="block-three">
+                <button type="submit">Criar Pedido</button>
+            </div>
+
+        </form>
+    </main>
+{%endblock%}

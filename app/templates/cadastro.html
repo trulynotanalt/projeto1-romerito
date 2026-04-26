@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{% block styles%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/cadastro.css')}}">
+{% endblock %}
+{%block headerContent%}
+{%endblock%}
+
+{%block content%}
+    <main>
+     <a href="{{url_for('index')}}">  <button href="" id="voltar">Voltar</button> </a>
+        <form action="{{url_for('cadastro')}}" method="post">
+            <h2>Cadastre-se</h2>
+            
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" placeholder="Nome" name="nome">
+            </div>
+            <div>
+                <label for="nome">Email:</label>
+                <input type="text" placeholder="Email" name="email">
+            </div>
+            <div>
+                <label for="nome">Telefone:</label>
+                <input type="text" placeholder="Telefone" name="telefone">
+            </div>
+            <div>
+                <label for="nome">Senha:</label>
+                <input type="text" placeholder="Senha" name="senha">
+            </div>
+
+            
+            
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main>
+{%endblock%}

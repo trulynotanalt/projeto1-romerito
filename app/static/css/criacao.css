@@ -1,0 +1,21 @@
+main{
+    display: flex;
+    justify-content: center; 
+    height: 100vh;   
+}
+body{
+    background-color: #DDDDDD;
+}
+
+form{
+    background-color: #F2F2F2;
+    justify-content: center;
+    display: flex;
+    padding: 1%;
+    
+    border-radius: 10px;
+    height: 30%;
+    border: 1px solid #bbbbbb;
+    box-shadow: #949494 0 4px 4px 0;    
+}
+

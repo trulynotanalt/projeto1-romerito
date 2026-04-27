@@ -3,19 +3,13 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 app = Flask(__name__)
 app.secret_key = "chave_secreta"
 
-
 usuario = {}
 cleylogs = False
 pedidos = []
 
-
-
 @app.route('/')
 def index():
-     return render_template('index.html')
-
-
-
+    return render_template('index.html')
 
 @app.route('/cadastro', methods=["GET", "POST"])
 def cadastro():
@@ -39,10 +33,9 @@ def cadastro():
         })
 
         cleylogs = True
-        return redirect(url_for('base'))
+        return redirect(url_for('criacao'))
 
     return render_template('cadastro.html')
-    
 
 @app.route('/logout')
 def logout():
@@ -50,13 +43,11 @@ def logout():
     cleylogs = False
     return redirect(url_for('index'))
 
-
 @app.route('/criacao')
 def criacao():
     if not cleylogs:
         return redirect(url_for('cadastro'))
-    return render_template('criacao.html')
-
+    return render_template('criacao.html', pedidos=pedidos)
 
 @app.route('/base')
 def base():
@@ -64,8 +55,7 @@ def base():
         return redirect(url_for('index'))
     return render_template('base.html')
 
-
-@app.route('/criar', methods=['GET', 'POST'])
+@app.route('/criar', methods=['POST'])
 def criar():
     global pedidos
 
@@ -73,28 +63,26 @@ def criar():
         flash('Não tem usuario logado')
         return redirect(url_for('cadastro'))
 
-    if request.method == 'POST':
-        endereco = {
-            'cidade': request.form['cidade'],
-            'bairro': request.form['bairro'],
-            'rua': request.form['rua'],
-            'numero_casa': request.form['num_casa'],
-        }
+    endereco = {
+        'cidade': request.form['cidade'],
+        'bairro': request.form['bairro'],
+        'rua': request.form['rua'],
+        'numero_casa': request.form['num_casa'],
+    }
 
-        pedido = {
-            'id': len(pedidos),
-            'nome': request.form['nome'],
-            'comida': request.form['comida'],
-            'quantidade': request.form['quantidade'],
-            'valor': request.form['valor'],
-            'endereco': endereco
-        }
+    pedido = {
+        'id': len(pedidos),
+        'nome': request.form['nome'],
+        'comida': request.form['comida'],
+        'quantidade': request.form['quantidade'],
+        'tamanho' : request.form['tamanho'],
+        'metodo_pagamento' : request.form['met_pagamento'],
+        'valor': request.form['valor'],
+        'endereco': endereco
+    }
 
-        pedidos.append(pedido)
-        return redirect(url_for('mostrar'))
-
-    return render_template('criacao.html')
-
+    pedidos.append(pedido)
+    return redirect(url_for('criacao'))
 
 @app.route('/pedidos')
 def mostrar():
@@ -106,7 +94,6 @@ def mostrar():
         lista = pedidos
 
     return render_template('pedidos.html', pedidos=lista)
-
 
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar(id):
@@ -127,26 +114,17 @@ def editar(id):
 
     return render_template('editar.html', pedido=pedido)
 
-
 @app.route('/deletar/<int:id>')
 def deletar(id):
-    if id >= len(pedidos):
+    if id < len(pedidos):
         pedidos.pop(id)
-        return redirect(url_for('mostrar'))
-
-
+    return redirect(url_for('criacao'))
 
 @app.route('/perfil')
 def perfil():
     if not cleylogs:
         return redirect(url_for('cadastro'))
     return render_template('perfil.html', usuario=usuario)
-
-
-
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

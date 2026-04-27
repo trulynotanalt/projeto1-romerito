@@ -8,8 +8,8 @@
 
 {%block content%}
     <main>
-        <button href="" id="voltar">Voltar</button>
-        <form action="" method="post">
+     <a href="{{url_for('index')}}">  <button href="" id="voltar">Voltar</button> </a>
+        <form action="{{url_for('cadastro')}}" method="post">
             <h2>Cadastre-se</h2>
             
             <div>
@@ -18,7 +18,7 @@
             </div>
             <div>
                 <label for="nome">Email:</label>
-                <input type="text" placeholder="Telefone" name="telefone">
+                <input type="text" placeholder="Email" name="email">
             </div>
             <div>
                 <label for="nome">Telefone:</label>

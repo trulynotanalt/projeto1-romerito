@@ -16,6 +16,7 @@ def index():
 
 
 
+
 @app.route('/cadastro', methods=["GET", "POST"])
 def cadastro():
     global usuario, cleylogs
